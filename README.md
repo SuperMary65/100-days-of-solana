@@ -2,8 +2,8 @@
 
 ![Progress](https://img.shields.io/badge/progress-1%2F100-blue?style=for-the-badge) 
 <br> ![Status](https://img.shields.io/badge/status-in%20progress-brightgreen?style=for-the-badge)
-\n ![Network](https://img.shields.io/badge/network-devnet-9945FF?style=for-the-badge)
-![Progress Bar](https://geps.dev/progress/50)
+<br>![Network](https://img.shields.io/badge/network-devnet-9945FF?style=for-the-badge)
+<br> ![Progress Bar](https://geps.dev/progress/50)
 
 My journey learning to build on Solana, one day at a time. Each folder contains the code, notes and screenshots for that day's challenge.
 
