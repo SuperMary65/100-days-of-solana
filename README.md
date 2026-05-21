@@ -1,7 +1,7 @@
 # 🤠 100 Days of Solana
 
-![Progress](https://img.shields.io/badge/progress-1%2F100-blue?style=for-the-badge)
-![Status](https://img.shields.io/badge/status-in%20progress-brightgreen?style=for-the-badge)
+![Progress](https://img.shields.io/badge/progress-1%2F100-blue?style=for-the-badge) 
+<br> ![Status](https://img.shields.io/badge/status-in%20progress-brightgreen?style=for-the-badge)
 ![Network](https://img.shields.io/badge/network-devnet-9945FF?style=for-the-badge)
 ![Progress Bar](https://geps.dev/progress/50)
 
