@@ -17,7 +17,7 @@ My journey learning to build on Solana, one day at a time. Each folder contains 
 
 | Day | Topic | Date | Status |
 |-----|-------|--------|-------|
-| [day-01](./day-01/README.md) | Create a wallet and fund it with devnet SOL | May 19 | ✅ | 
+| [day-01](./day-01) | Create a wallet and fund it with devnet SOL | May 19 | ✅ | 
 | 02 | Save keypair to disk | | ⬜ |
 | 03 | Coming soon... | | ⬜ |
 
