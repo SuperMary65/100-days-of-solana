@@ -1,9 +1,9 @@
 # 🤠 100 Days of Solana
 
-![Progress](https://img.shields.io/badge/progress-1%2F100-blue?style=for-the-badge) 
+![Progress](https://img.shields.io/badge/progress-2%2F100-blue?style=for-the-badge) 
+<br> ![Progress Bar](https://geps.dev/progress/2)
 <br> ![Status](https://img.shields.io/badge/status-in%20progress-brightgreen?style=for-the-badge)
 <br>![Network](https://img.shields.io/badge/network-devnet-9945FF?style=for-the-badge)
-<br> ![Progress Bar](https://geps.dev/progress/50)
 
 My journey learning to build on Solana, one day at a time. Each folder contains the code, notes and screenshots for that day's challenge.
 
@@ -17,8 +17,8 @@ My journey learning to build on Solana, one day at a time. Each folder contains 
 
 | Day | Topic | Date | Status |
 |-----|-------|--------|-------|
-| [day-01](./day-01) | Create a wallet and fund it with devnet SOL | May 19 | ✅ | 
-| 02 | Save keypair to disk | | ⬜ |
+| [day-01](./day-01-02) | Create a wallet and fund it with devnet SOL | May 19 | ✅ | 
+| [day-02](./day-01-02) | Create a persistent wallet | May 21 | ✅ |
 | 03 | Coming soon... | | ⬜ |
 
 ## 🔗 Resources
