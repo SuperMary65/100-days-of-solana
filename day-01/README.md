@@ -27,24 +27,24 @@ My wallet address: `HWAzXu14v6HzC3NhhiqxK7uF1KBuTxiLXJh1pDYyQxvJ`
 Before script would create new wallet each time. But this time it remembers 
 Important functions from `@solana/kit`
 `generateKeyPair` (not generateKeyPairSigner like Day 1) — gives you the raw cryptographic keys, which you need to export to a file
-`createKeyPairSignerFromBytes` — rebuilds a wallet from saved bytes
-`createSignerFromKeyPair` — wraps a fresh keypair into a usable wallet signer
-`readFile`, `writeFile` — Node's built-in tools for reading/writing files on disk
+\n`createKeyPairSignerFromBytes` — rebuilds a wallet from saved bytes
+\n`createSignerFromKeyPair` — wraps a fresh keypair into a usable wallet signer
+\n`readFile`, `writeFile` — Node's built-in tools for reading/writing files on disk
 
 We use `generateKeyPair` and make it `true`. By default, cryptographic keys are locked inside computer's crypto subsystem for security, so you can use them but not see them. But with true, you can export these to save them. 
 
 Public Key can be extracted as raw bytes
-`const publicKeyBytes = new Uint8Array(await crypto.subtle.exportKey("raw", keyPair.publicKey));`
+\n`const publicKeyBytes = new Uint8Array(await crypto.subtle.exportKey("raw", keyPair.publicKey));`
 
 Private Key can be exported only in PKCS8 format, which is a standard wrapper that adds 16 bytes of metadata at the start.
 So the script exports as PKCS8, then uses .slice(-32) to grab just the last 32 bytes.
-`const pkcs8 = await crypto.subtle.exportKey("pkcs8", keyPair.privateKey);
-const privateKeyBytes = new Uint8Array(pkcs8).slice(-32);`
+\n`const pkcs8 = await crypto.subtle.exportKey("pkcs8", keyPair.privateKey);
+\nconst privateKeyBytes = new Uint8Array(pkcs8).slice(-32);`
 
 Solana stores keypair in 64 byte array: private key first (bytes 0–31), public key second (bytes 32–63)
-`const keypairBytes = new Uint8Array(64);
-keypairBytes.set(privateKeyBytes, 0);
-keypairBytes.set(publicKeyBytes, 32);`
+\n`const keypairBytes = new Uint8Array(64);
+\nkeypairBytes.set(privateKeyBytes, 0);
+\nkeypairBytes.set(publicKeyBytes, 32);`
 
 ## Proof of work
 ![Created new persisent wallet](./screenshot2.png)
