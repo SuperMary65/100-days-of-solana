@@ -24,27 +24,38 @@ My wallet address: `HWAzXu14v6HzC3NhhiqxK7uF1KBuTxiLXJh1pDYyQxvJ`
 - `persisent_wallet.mjs` - loads and shows balance of existed waller, otherwise creates new wallet
 
 ## What I learned
-Before script would create new wallet each time. But this time it remembers 
-Important functions from `@solana/kit`
-`generateKeyPair` (not generateKeyPairSigner like Day 1) — gives you the raw cryptographic keys, which you need to export to a file
-\n`createKeyPairSignerFromBytes` — rebuilds a wallet from saved bytes
-\n`createSignerFromKeyPair` — wraps a fresh keypair into a usable wallet signer
-\n`readFile`, `writeFile` — Node's built-in tools for reading/writing files on disk
 
-We use `generateKeyPair` and make it `true`. By default, cryptographic keys are locked inside computer's crypto subsystem for security, so you can use them but not see them. But with true, you can export these to save them. 
+Before, the script would create a new wallet each time. This time it remembers. Important functions from `@solana/kit`:
 
-Public Key can be extracted as raw bytes
-\n`const publicKeyBytes = new Uint8Array(await crypto.subtle.exportKey("raw", keyPair.publicKey));`
+- `generateKeyPair` (not `generateKeyPairSigner` like Day 1) — gives you the raw cryptographic keys, which you need to export to a file
+- `createKeyPairSignerFromBytes` — rebuilds a wallet from saved bytes
+- `createSignerFromKeyPair` — wraps a fresh keypair into a usable wallet signer
+- `readFile`, `writeFile` — Node's built-in tools for reading/writing files on disk
 
-Private Key can be exported only in PKCS8 format, which is a standard wrapper that adds 16 bytes of metadata at the start.
-So the script exports as PKCS8, then uses .slice(-32) to grab just the last 32 bytes.
-\n`const pkcs8 = await crypto.subtle.exportKey("pkcs8", keyPair.privateKey);
-\nconst privateKeyBytes = new Uint8Array(pkcs8).slice(-32);`
+We use `generateKeyPair(true)`. By default, cryptographic keys are locked inside the computer's crypto subsystem for security — you can use them but not see them. With `true`, you can export them to save them.
 
-Solana stores keypair in 64 byte array: private key first (bytes 0–31), public key second (bytes 32–63)
-\n`const keypairBytes = new Uint8Array(64);
-\nkeypairBytes.set(privateKeyBytes, 0);
-\nkeypairBytes.set(publicKeyBytes, 32);`
+**Public key** can be extracted as raw bytes:
+
+​```javascript
+const publicKeyBytes = new Uint8Array(
+  await crypto.subtle.exportKey("raw", keyPair.publicKey)
+);
+​```
+
+**Private key** can only be exported in PKCS8 format, a standard wrapper that adds 16 bytes of metadata at the start. So the script exports as PKCS8, then uses `.slice(-32)` to grab just the last 32 bytes:
+
+​```javascript
+const pkcs8 = await crypto.subtle.exportKey("pkcs8", keyPair.privateKey);
+const privateKeyBytes = new Uint8Array(pkcs8).slice(-32);
+​```
+
+Solana stores the keypair in a 64-byte array: private key first (bytes 0–31), public key second (bytes 32–63):
+
+​```javascript
+const keypairBytes = new Uint8Array(64);
+keypairBytes.set(privateKeyBytes, 0);
+keypairBytes.set(publicKeyBytes, 32);
+​```
 
 ## Proof of work
 ![Created new persisent wallet](./screenshot2.png)
