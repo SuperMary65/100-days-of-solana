@@ -36,26 +36,26 @@ We use `generateKeyPair(true)`. By default, cryptographic keys are locked inside
 
 **Public key** can be extracted as raw bytes:
 
-​```javascript
+```javascript
 const publicKeyBytes = new Uint8Array(
   await crypto.subtle.exportKey("raw", keyPair.publicKey)
 );
-​```
+```
 
 **Private key** can only be exported in PKCS8 format, a standard wrapper that adds 16 bytes of metadata at the start. So the script exports as PKCS8, then uses `.slice(-32)` to grab just the last 32 bytes:
 
-​```javascript
+```javascript
 const pkcs8 = await crypto.subtle.exportKey("pkcs8", keyPair.privateKey);
 const privateKeyBytes = new Uint8Array(pkcs8).slice(-32);
-​```
+```
 
 Solana stores the keypair in a 64-byte array: private key first (bytes 0–31), public key second (bytes 32–63):
 
-​```javascript
+```javascript
 const keypairBytes = new Uint8Array(64);
 keypairBytes.set(privateKeyBytes, 0);
 keypairBytes.set(publicKeyBytes, 32);
-​```
+```
 
 ## Proof of work
 ![Created new persisent wallet](./screenshot2.png)
